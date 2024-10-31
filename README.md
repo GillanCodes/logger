@@ -20,12 +20,11 @@ How to use ?
 NB : type can be a string, a number of nothing
 
 Type List : 
- - number : 0 | string : "error"
+ - number : 0 | string : "info" | default
  - number : 1 | string : "success"
  - number : 2 | string : "warn"
- - number : 3 | string : "info"
+ - number : 3 | string : "error"
  - number : 4 | string : "debug"
- - default : nothing
 
 ---
 

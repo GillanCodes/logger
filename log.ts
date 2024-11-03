@@ -22,7 +22,7 @@ FgBlack = "\x1b[30m",
 BgGreen = "\x1b[42m"
 
 //init constant
-let appName:string = config.APP_NAME;
+const appName:string = config.APP_NAME;
 const timestamp:Date = new Date();
 const time = (): string => { 
 	return new Date(new Date().valueOf() * 1).toLocaleDateString("fr-FR", {hour: "2-digit", minute: "2-digit", second:"2-digit", weekday: "long", year: "numeric", month: "short", day:"numeric"})
@@ -46,7 +46,7 @@ fs.readFile(filePath, (err, data) => {
 });
 
 const log = (message:string|object|null|undefined|number, type?:string|number|undefined|null): void => {
-    var ln:string = "";
+    let ln:string = "";
     switch(type)
     {
         case 0:
@@ -58,13 +58,13 @@ const log = (message:string|object|null|undefined|number, type?:string|number|un
 
         case 1:
         case "success":
-            var ln = `[${time()}] [SUCCESS] ${appName} - ${message}`;
+            ln = `[${time()}] [SUCCESS] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(`${FgGreen}${ln}${Reset}`);
             break;
         case 2:
         case "warn":
-            var ln = `[${time()}] [WARN] ${appName} - ${message}`;
+            ln = `[${time()}] [WARN] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(`${FgYellow}${ln}${Reset}`);
             break;
@@ -76,12 +76,12 @@ const log = (message:string|object|null|undefined|number, type?:string|number|un
             break;
         case 4:
         case "debug":
-            var ln =  `[${time()}] [DEBUG] ${appName} - ${message}`;
+            ln =  `[${time()}] [DEBUG] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(`${BgGreen}${FgBlack}${ln}${Reset}`);
             break;
         default:
-            var ln =  `[${time()}] [---] ${appName} - ${message}`;
+            ln =  `[${time()}] [---] ${appName} - ${message}`;
             fs.appendFileSync(filePath, `${ln}\n`);
             console.log(`${FgCyan}${ln}${Reset}`);
             break;

@@ -1,3 +1,5 @@
+//import * as fs from "node:fs"; ====>>> Deno
+//import * as path from "path"; ====>>> Deno
 import * as fs from "fs";
 import * as path from "path";
 
@@ -28,7 +30,16 @@ const time = (): string => {
 	return new Date(new Date().valueOf() * 1).toLocaleDateString("fr-FR", {hour: "2-digit", minute: "2-digit", second:"2-digit", weekday: "long", year: "numeric", month: "short", day:"numeric"})
 }
 const fileName:string = `${timestamp.getDate()}_${timestamp.getMonth() + 1}_${timestamp.getFullYear()}.log`;
-const sanitizedPath = path.join(__dirname, config.LOG_FOLDER);
+
+/**     UNCOMMENT ONE OF THIS TWO LINE 
+ *      IF YOU USE DENO OR NODEJS
+ * 
+ * const sanitizedPath = path.join(__dirname, config.LOG_FOLDER);  ======>>>> Line for NodeJS
+ * 
+ * const sanitizedPath = `${import.meta.dirname}${config.LOG_FOLDER}`; ======>>>>>  Line for Deno
+ * 
+ */
+
 const filePath:string = `${sanitizedPath}${fileName}`;
 
 //Check if "logs" folder exist ?
